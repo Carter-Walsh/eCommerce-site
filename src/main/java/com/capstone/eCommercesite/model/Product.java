@@ -26,12 +26,6 @@ public class Product {
     private String primaryCategory;
     private String weight;
 
-    public Product() {}
-
-    public Product(String productName) {
-        this.productName = productName;
-    }
-
     public Product(double price, String availability, String brand, String categories, String imageUrl, String productName, String primaryCategory, String weight) {
         this.price = price;
         this.availability = availability;
