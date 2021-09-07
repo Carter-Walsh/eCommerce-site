@@ -22,8 +22,6 @@ public class ProductProcessor implements ItemProcessor<ProductInput, Product> {
 
         final Product product = new Product(price, availability, brand, categories, imageUrl, productName, primaryCategory, weight);
 
-        log.info("Converting " + item + " into " + product);
-
         return product;
     }
 
