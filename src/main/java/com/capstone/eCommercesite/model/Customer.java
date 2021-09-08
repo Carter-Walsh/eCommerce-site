@@ -19,6 +19,8 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Order> orders = new ArrayList<>();
 
+    public Customer() {}
+
     public Customer(String firstName, String lastName, String emailAddress, String password) {
         this.firstName = firstName;
         this.lastName = lastName;

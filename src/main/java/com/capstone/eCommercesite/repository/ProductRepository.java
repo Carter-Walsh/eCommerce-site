@@ -2,6 +2,10 @@ package com.capstone.eCommercesite.repository;
 
 import com.capstone.eCommercesite.model.Product;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ProductRepository extends CrudRepository<Product, String> {
+@Repository
+public interface ProductRepository extends CrudRepository<Product, Integer> {
+
+
 }
