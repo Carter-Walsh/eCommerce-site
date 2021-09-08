@@ -1,6 +1,8 @@
 package com.capstone.eCommercesite.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "products")
 public class Product {
@@ -8,16 +10,13 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
-    private String productId;
+    private int productId;
 
     private double price;
     private String availability;
     private String brand;
-
-    @Lob
     private String categories;
 
-    @Lob
     @Column(name = "image_url")
     private String imageUrl;
     
@@ -27,6 +26,11 @@ public class Product {
     @Column(name = "primaryCategory")
     private String primaryCategory;
     private String weight;
+
+    @OneToMany(mappedBy = "product")
+    private List<OrdersProducts> ordersProducts = new ArrayList<>();
+
+    public Product() {}
 
     public Product(double price, String availability, String brand, String categories, String imageUrl, String productName, String primaryCategory, String weight) {
         this.price = price;
@@ -101,6 +105,14 @@ public class Product {
 
     public void setWeight(String weight) {
         this.weight = weight;
+    }
+
+    public List<OrdersProducts> getOrdersProducts() {
+        return ordersProducts;
+    }
+
+    public void setOrdersProducts(List<OrdersProducts> ordersProducts) {
+        this.ordersProducts = ordersProducts;
     }
 
     @Override

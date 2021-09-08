@@ -1,6 +1,8 @@
 package com.capstone.eCommercesite.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "orders")
 public class Order {
@@ -16,6 +18,11 @@ public class Order {
 
     @Column(name = "order_name")
     private String orderName;
+
+    @OneToMany(mappedBy = "order")
+    private List<OrdersProducts> ordersProducts = new ArrayList<>();
+
+    public Order() {}
 
     public Order (String orderName) {
         this.orderName = orderName;
@@ -43,6 +50,14 @@ public class Order {
 
     public void setOrderName(String orderName) {
         this.orderName = orderName;
+    }
+
+    public List<OrdersProducts> getOrdersProducts() {
+        return ordersProducts;
+    }
+
+    public void setOrdersProducts(List<OrdersProducts> ordersProducts) {
+        this.ordersProducts = ordersProducts;
     }
 }
 
