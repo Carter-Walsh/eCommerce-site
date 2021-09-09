@@ -28,6 +28,14 @@ public class Customer {
         this.password = password;
     }
 
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -66,5 +74,43 @@ public class Customer {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerId=" + customerId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", password='" + password + '\'' +
+                ", orders=" + orders +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Customer customer = (Customer) o;
+
+        if (customerId != customer.customerId) return false;
+        if (!firstName.equals(customer.firstName)) return false;
+        if (!lastName.equals(customer.lastName)) return false;
+        if (!emailAddress.equals(customer.emailAddress)) return false;
+        if (!password.equals(customer.password)) return false;
+        return orders.equals(customer.orders);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = customerId;
+        result = 31 * result + firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + emailAddress.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + orders.hashCode();
+        return result;
     }
 }

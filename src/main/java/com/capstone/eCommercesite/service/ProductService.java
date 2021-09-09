@@ -19,13 +19,31 @@ public class ProductService {
     @PersistenceContext
     private EntityManager entityManager;
 
+    // find one product by ID
     public Optional<Product> getProduct(int id) {
         return productRepository.findById(id);
     }
 
+    // get a list of 20 products to display on the homepage of the website
     public List<Product> getHomepageProducts() {
-        return entityManager.createQuery("SELECT p FROM products p ORDER BY product_id",
-                Product.class).setMaxResults(20).getResultList();
+        return productRepository.getHomepageProducts();
+    }
+
+    // retrieve products based on a user's search parameters
+    public List<Product> getSearchResults(String query) {
+        List<Product> startsWithResults = productRepository.findByProductNameStartsWithIgnoreCase(query);
+
+        if (!startsWithResults.isEmpty()) {
+            return startsWithResults;
+        }
+
+        List<Product> containsResults = productRepository.findByProductNameContainingIgnoreCase(query);
+
+        if (!containsResults.isEmpty()) {
+            return containsResults;
+        }
+
+        return productRepository.findByProductNameEndsWithIgnoreCase(query);
     }
 
 }

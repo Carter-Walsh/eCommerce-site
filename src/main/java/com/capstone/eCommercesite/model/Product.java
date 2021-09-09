@@ -15,9 +15,11 @@ public class Product {
     private double price;
     private String availability;
     private String brand;
+
+    @Column(length = 1000)
     private String categories;
 
-    @Column(name = "image_url")
+    @Column(name = "image_url", length = 15000)
     private String imageUrl;
     
     @Column(name = "product_name")
@@ -127,5 +129,44 @@ public class Product {
                 ", primaryCategory='" + primaryCategory + '\'' +
                 ", weight=" + weight +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+
+        if (productId != product.productId) return false;
+        if (Double.compare(product.price, price) != 0) return false;
+        if (availability != null ? !availability.equals(product.availability) : product.availability != null)
+            return false;
+        if (brand != null ? !brand.equals(product.brand) : product.brand != null) return false;
+        if (categories != null ? !categories.equals(product.categories) : product.categories != null) return false;
+        if (imageUrl != null ? !imageUrl.equals(product.imageUrl) : product.imageUrl != null) return false;
+        if (productName != null ? !productName.equals(product.productName) : product.productName != null) return false;
+        if (primaryCategory != null ? !primaryCategory.equals(product.primaryCategory) : product.primaryCategory != null)
+            return false;
+        if (weight != null ? !weight.equals(product.weight) : product.weight != null) return false;
+        return ordersProducts != null ? ordersProducts.equals(product.ordersProducts) : product.ordersProducts == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = productId;
+        temp = Double.doubleToLongBits(price);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (availability != null ? availability.hashCode() : 0);
+        result = 31 * result + (brand != null ? brand.hashCode() : 0);
+        result = 31 * result + (categories != null ? categories.hashCode() : 0);
+        result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
+        result = 31 * result + (productName != null ? productName.hashCode() : 0);
+        result = 31 * result + (primaryCategory != null ? primaryCategory.hashCode() : 0);
+        result = 31 * result + (weight != null ? weight.hashCode() : 0);
+        result = 31 * result + (ordersProducts != null ? ordersProducts.hashCode() : 0);
+        return result;
     }
 }
