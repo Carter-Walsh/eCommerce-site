@@ -14,10 +14,12 @@ public class OrdersProducts {
     @Column(name = "orders_products_id")
     private int ordersProductsId;
 
+    // foreign key to the order_id column of orders table
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private Order order;
 
+    // foreign key to the product_id of the products table
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private Product product;
@@ -34,6 +36,7 @@ public class OrdersProducts {
         this.ordersProductsId = ordersProductsId;
     }
 
+    // this is being ignored so that the ManyToMany relationship doesn't create infinite recursion in a response to a user request
     @JsonIgnore
     public Order getOrder() {
         return order;
@@ -43,6 +46,7 @@ public class OrdersProducts {
         this.order = order;
     }
 
+    // this is being ignored so that the ManyToMany relationship doesn't create infinite recursion in a response to a user request
     @JsonIgnore
     public Product getProduct() {
         return product;

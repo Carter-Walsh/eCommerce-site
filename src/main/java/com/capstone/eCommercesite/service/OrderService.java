@@ -5,14 +5,11 @@ import com.capstone.eCommercesite.model.Order;
 import com.capstone.eCommercesite.model.OrdersProducts;
 import com.capstone.eCommercesite.model.Product;
 import com.capstone.eCommercesite.repository.CustomerRepository;
-import com.capstone.eCommercesite.repository.OrderRepository;
 import com.capstone.eCommercesite.repository.OrdersProductsRepository;
 import com.capstone.eCommercesite.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Service
@@ -22,16 +19,10 @@ public class OrderService {
     private OrdersProductsRepository ordersProductsRepository;
 
     @Autowired
-    private OrderRepository orderRepository;
-
-    @Autowired
     private CustomerRepository customerRepository;
 
     @Autowired
     private ProductRepository productRepository;
-
-    @PersistenceContext
-    private EntityManager entityManager;
 
     // create new order
     public void createOrder(int customerId, int productId) {
@@ -52,8 +43,7 @@ public class OrderService {
     // retrieve items in order
     public List<Order> getItemsInOrder(int customerId) {
         Customer customer = customerRepository.findById(customerId).get();
-        List<Order> orders = customer.getOrders();
-        return orders;
+        return customer.getOrders();
     }
 
 }

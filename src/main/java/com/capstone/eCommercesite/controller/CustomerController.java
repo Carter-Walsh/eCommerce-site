@@ -19,11 +19,11 @@ public class CustomerController {
         return customerService.createCustomer(customer);
     }
 
-    // authenticate a user
+    // authenticate a user for login
     @GetMapping("/login/{emailAddress}/{password}")
     public String verifyLoginRequest(@PathVariable String emailAddress, @PathVariable String password) {
         boolean result = customerService.verifyCustomer(emailAddress, password);
-        return result ? "User has been verified!" : "No email or password found in the database";
+        return result ? "User has been verified!" : "No email or password found in the database. You should create an account!";
     }
 
     // read customer account information

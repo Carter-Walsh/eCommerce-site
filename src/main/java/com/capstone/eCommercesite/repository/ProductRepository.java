@@ -14,9 +14,8 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
     @Query(nativeQuery = true, value = "SELECT * FROM products p ORDER BY product_id LIMIT 20")
     List<Product> getHomepageProducts();
 
+    // these 3 methods all deal with searching for a query provided by the user
     List<Product> findByProductNameStartsWithIgnoreCase(String query);
     List<Product> findByProductNameContainingIgnoreCase(String query);
     List<Product> findByProductNameEndsWithIgnoreCase(String query);
-
-
 }

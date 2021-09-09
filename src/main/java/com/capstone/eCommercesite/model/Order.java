@@ -14,6 +14,7 @@ public class Order {
     @Column(name = "order_id")
     private int orderId;
 
+    // foreign key to customer_id in the customers table
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
@@ -38,6 +39,7 @@ public class Order {
         this.orderId = orderId;
     }
 
+    // this is being ignored so that the ManyToMany relationship doesn't create infinite recursion in a response to a user request
     @JsonIgnore
     public Customer getCustomer() {
         return customer;
