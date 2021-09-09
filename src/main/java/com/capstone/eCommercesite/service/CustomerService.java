@@ -35,12 +35,11 @@ public class CustomerService {
     // verify customer for Login
     public boolean verifyCustomer(String emailAddress, String password) {
         Customer customerByEmail = customerRepository.findByEmailAddress(emailAddress);
-        return customerByEmail.getPassword().equals(password);
+        if (customerByEmail != null) {
+            return customerByEmail.getPassword().equals(password);
+        }
 
-//        Customer customerByPassword = customerRepository.findByPassword(password);
-//        if (customerByEmail != null && customerByPassword != null) {
-//            return customerByEmail.getCustomerId() == customerByPassword.getCustomerId();
-//        }
+        return false;
     }
 
     // read customer from DB
