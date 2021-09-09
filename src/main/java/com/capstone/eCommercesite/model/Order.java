@@ -1,5 +1,7 @@
 package com.capstone.eCommercesite.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,7 @@ public class Order {
         this.orderId = orderId;
     }
 
+    @JsonIgnore
     public Customer getCustomer() {
         return customer;
     }
@@ -58,6 +61,38 @@ public class Order {
 
     public void setOrdersProducts(List<OrdersProducts> ordersProducts) {
         this.ordersProducts = ordersProducts;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId=" + orderId +
+                ", customer=" + customer +
+                ", orderName='" + orderName + '\'' +
+                ", ordersProducts=" + ordersProducts +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Order order = (Order) o;
+
+        if (orderId != order.orderId) return false;
+        if (customer != null ? !customer.equals(order.customer) : order.customer != null) return false;
+        if (orderName != null ? !orderName.equals(order.orderName) : order.orderName != null) return false;
+        return ordersProducts != null ? ordersProducts.equals(order.ordersProducts) : order.ordersProducts == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = orderId;
+        result = 31 * result + (customer != null ? customer.hashCode() : 0);
+        result = 31 * result + (orderName != null ? orderName.hashCode() : 0);
+        result = 31 * result + (ordersProducts != null ? ordersProducts.hashCode() : 0);
+        return result;
     }
 }
 

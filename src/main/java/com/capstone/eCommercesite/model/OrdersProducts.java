@@ -1,5 +1,7 @@
 package com.capstone.eCommercesite.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 // JOIN TABLE
@@ -32,6 +34,7 @@ public class OrdersProducts {
         this.ordersProductsId = ordersProductsId;
     }
 
+    @JsonIgnore
     public Order getOrder() {
         return order;
     }
@@ -40,6 +43,7 @@ public class OrdersProducts {
         this.order = order;
     }
 
+    @JsonIgnore
     public Product getProduct() {
         return product;
     }
@@ -54,5 +58,37 @@ public class OrdersProducts {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "OrdersProducts{" +
+                "ordersProductsId=" + ordersProductsId +
+                ", order=" + order +
+                ", product=" + product +
+                ", quantity=" + quantity +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        OrdersProducts that = (OrdersProducts) o;
+
+        if (ordersProductsId != that.ordersProductsId) return false;
+        if (quantity != that.quantity) return false;
+        if (!order.equals(that.order)) return false;
+        return product.equals(that.product);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = ordersProductsId;
+        result = 31 * result + order.hashCode();
+        result = 31 * result + product.hashCode();
+        result = 31 * result + quantity;
+        return result;
     }
 }

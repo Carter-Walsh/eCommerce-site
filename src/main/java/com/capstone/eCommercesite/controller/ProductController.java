@@ -9,29 +9,26 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class MainController {
+public class ProductController {
 
     @Autowired
     private ProductService productService;
 
+    // read single product from DB
     @GetMapping("/product/{id}")
     public Optional<Product> getProduct(@PathVariable int id) {
         return productService.getProduct(id);
     }
 
+    // return 20 products on homepage load
     @GetMapping("/homepage")
     public List<Product> getHomepageProducts() {
         return productService.getHomepageProducts();
     }
 
-    @PostMapping("/register")
-    public String register() {
-        return "register";
+    // return results of a user search
+    @GetMapping("/search/{query}")
+    public List<Product> getSearchResults(@PathVariable String query) {
+        return productService.getSearchResults(query);
     }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
 }
