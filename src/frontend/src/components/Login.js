@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
-const Login = () => {
+const Login = ({ onLoginSubmit }) => {
 
     const [emailAddress, setEmailAddress] = useState("");
     const [password, setPassword] = useState("");
@@ -26,7 +26,7 @@ const Login = () => {
                 password: password
             }
         }).then((res) => {
-            console.log(res.data);
+            onLoginSubmit(res.data);
         }, (err) => {
             console.log(err);
         });
@@ -50,6 +50,8 @@ const Login = () => {
           <Form.Control type="password" placeholder="Password" value={password} onChange={onPasswordChange} />
         </Form.Group>
         <Button variant="primary" type="submit">Submit</Button>
+        <Button variant="primary" href="/register">Register</Button>
+        
       </Form>
     </Container>
   );

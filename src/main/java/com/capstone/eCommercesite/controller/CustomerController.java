@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 public class CustomerController {
 
@@ -20,11 +21,10 @@ public class CustomerController {
     }
 
     // authenticate a user for login
-    @CrossOrigin
     @GetMapping("/login")
-    public String verifyLoginRequest(@RequestParam(name = "emailAddress", required = true) String emailAddress, @RequestParam(name = "password", required = true) String password) {
+    public boolean verifyLoginRequest(@RequestParam(name = "emailAddress", required = true) String emailAddress, @RequestParam(name = "password", required = true) String password) {
         boolean result = customerService.verifyCustomer(emailAddress, password);
-        return result ? "User has been verified!" : "No email or password found in the database. You should create an account!";
+        return result;
     }
 
     // read customer account information
