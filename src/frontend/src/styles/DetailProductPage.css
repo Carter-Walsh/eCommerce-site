@@ -1,0 +1,28 @@
+.product-container {
+    width: 100%;
+    padding: 3rem 4rem;
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    /* justify-content: center; */
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 7rem;
+}
+
+.product-details-image {
+    height: 40rem;
+    width: 40rem;
+    margin-right: 1.5rem;
+}
+
+.product-details-text {
+    font-size: 1.5rem;
+    padding: 2rem;
+}
