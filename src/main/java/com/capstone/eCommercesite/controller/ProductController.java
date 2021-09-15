@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 public class ProductController {
 
@@ -15,8 +16,8 @@ public class ProductController {
     private ProductService productService;
 
     // read single product from DB
-    @GetMapping("/product/{id}")
-    public Optional<Product> getProduct(@PathVariable int id) {
+    @GetMapping("/product")
+    public Optional<Product> getProduct(@RequestParam(name = "id", required = true) int id) {
         return productService.getProduct(id);
     }
 
@@ -27,8 +28,8 @@ public class ProductController {
     }
 
     // return results of a user search
-    @GetMapping("/search/{query}")
-    public List<Product> getSearchResults(@PathVariable String query) {
+    @GetMapping("/search")
+    public List<Product> getSearchResults(@RequestParam(name = "query", required = true) String query) {
         return productService.getSearchResults(query);
     }
 }

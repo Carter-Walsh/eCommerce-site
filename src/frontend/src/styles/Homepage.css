@@ -1,0 +1,31 @@
+.color-nav {
+    color: white;
+}
+
+.products-container {
+    overflow-y: auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2%;    
+}
+
+.sale-image-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+}
+
+.homepage-product-image {
+    height: 12rem;
+    width: 3rem;
+}
+
+.sale-image {
+    display: flex;
+    justify-content: center;
+    width: 60rem;
+    height: auto;
+}
