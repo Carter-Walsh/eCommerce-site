@@ -28,7 +28,7 @@ public class ProductController {
     }
 
     // return results of a user search
-    @GetMapping("/search")
+    @GetMapping("/products/search")
     public List<Product> getSearchResults(@RequestParam(name = "query", required = true) String query) {
         return productService.getSearchResults(query);
     }
