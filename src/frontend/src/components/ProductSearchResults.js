@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Product from "./Product";
 import NavigationBar from "./NavigationBar";
+import "../styles/ProductSearchResults.css";
 import axios from "axios";
 
 const ProductSearchResults = (props) => {
@@ -31,7 +32,9 @@ const ProductSearchResults = (props) => {
   return (
     <div>
       <NavigationBar />
-      {displayUserSearchResults}
+      <div className="products-container">
+        {displayUserSearchResults}
+      </div>
     </div>
   );
 };

@@ -21,29 +21,34 @@ const Register = () => {
   };
 
   const onFirstNameChange = (event) => {
-      setFirstName(event.target.value);
+    setFirstName(event.target.value);
   };
 
   const onLastNameChange = (event) => {
-      setLastName(event.target.value);
+    setLastName(event.target.value);
   };
 
   const onEmailAddressChange = (event) => {
-      setEmailAddress(event.target.value);
+    setEmailAddress(event.target.value);
   };
 
   const onPasswordChange = (event) => {
-      setPassword(event.target.value);
+    setPassword(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:8080/register-customer", customer)
-    .then(res => {
-        console.log(res.data);
-    }).catch(err => {
-        console.log(err)
-    });
+    axios
+      .post("http://localhost:8080/register-customer", customer)
+      .then((res) => {
+        alert(res.data);
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 500);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

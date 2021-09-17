@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
-const Login = ({ onLoginSubmit }) => {
+const Login = ({ handleSubmit }) => {
 
     const [emailAddress, setEmailAddress] = useState("");
     const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ const Login = ({ onLoginSubmit }) => {
         setPassword(event.target.value);
     }
     
-    const handleSubmit = (event) => {
+    const handleSubmitLogin = (event) => {
         event.preventDefault();
         axios.get("http://localhost:8080/login", {
             params: {
@@ -26,7 +26,8 @@ const Login = ({ onLoginSubmit }) => {
                 password: password
             }
         }).then((res) => {
-            onLoginSubmit(res.data);
+            console.log(res.data);
+            handleSubmit(res.data);
         }, (err) => {
             console.log(err);
         });
@@ -34,7 +35,7 @@ const Login = ({ onLoginSubmit }) => {
 
   return (
     <Container className="form d-flex justify-content-center align-items-center">
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmitLogin}>
         <h1 className="mb-3">Welcome to the eCommerce site!</h1>
         <h3 className="mb-3">Please sign in below</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
