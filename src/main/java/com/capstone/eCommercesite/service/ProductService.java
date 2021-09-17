@@ -29,6 +29,7 @@ public class ProductService {
     // second method will find matches in the middle of a product name, if nothing is found,
     // last method will find matches at the end of product name
     public List<Product> getSearchResults(String query) {
+
         List<Product> startsWithResults = productRepository.findByProductNameStartsWithIgnoreCase(query);
 
         if (!startsWithResults.isEmpty()) {

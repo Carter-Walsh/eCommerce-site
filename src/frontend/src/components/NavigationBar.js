@@ -7,18 +7,18 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
-const NavigationBar = ({ handleHomepageSubmit }) => {
-  const [userSearchInput, setUserSearch] = useState("");
+const NavigationBar = () => {
+  const [userSearchInput, setUserSearch] = useState();
 
   // sets state equal to whatever the user typed in to the search bar
   const onUserInputChange = (event) => {
     setUserSearch(event.target.value);
   };
 
-  // calls handleSubmit which was passed down by <Homepage /> and passes it the search term the user typed in
-  const handleNavBarSubmit = (event) => {
+  // handles a submit if a user presses enter instead of the search button
+  const handleSubmit = (event) => {
     event.preventDefault();
-    handleHomepageSubmit(userSearchInput);
+    window.location.href = `/products/search/${userSearchInput}`;
   };
 
   return (
@@ -44,7 +44,7 @@ const NavigationBar = ({ handleHomepageSubmit }) => {
               </NavDropdown>
             </Nav>
             <Nav>
-              <Form onSubmit={handleNavBarSubmit} className="d-flex">
+              <Form onSubmit={handleSubmit} className="d-flex">
                 <FormControl
                   type="search"
                   placeholder="Search"
@@ -55,7 +55,7 @@ const NavigationBar = ({ handleHomepageSubmit }) => {
                 />
                 <Button
                   type="submit"
-                  href="/products/search"
+                  href={`/products/search/${userSearchInput}`}
                   variant="outline-light"
                 >
                   Search

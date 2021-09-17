@@ -11,35 +11,19 @@ import ProductSearchResults from "./ProductSearchResults";
 
 function App() {
   const [loginResponse, setLoginResponse] = useState();
-  const [searchQuery, setSearchQuery] = useState("");
 
   const handleLogin = (result) => {
     setLoginResponse(result);
   };
 
-  // sets state equal to search term the user typed in that it received from <Homepage />
-  const handleSubmit = (search) => {
-    setSearchQuery(search);
-  };
-
   return (
     <Router>
       <Switch>
-        <Route exact path="/register">
-          <Register />
-        </Route>
-        <Route
-          exact
-          path="/product/:productId"
-          component={DetailProductPage}
-        ></Route>
-        <Route exact path="/products/search">
-          <ProductSearchResults searchQuery={searchQuery} />
-        </Route>
-        <Route exact path="/">
-          {loginResponse ? <Homepage /> : <Login onLoginSubmit={handleLogin} />}
-          <Homepage handleSubmit={handleSubmit} />
-        </Route>
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/product/:productId" component={DetailProductPage} />
+        <Route exact path="/products/search/:query" component={ProductSearchResults} />
+        <Route exact path="/" component={Homepage} />
+        {/* {loginResponse ? <Homepage /> : <Login onLoginSubmit={handleLogin} />} */}
       </Switch>
     </Router>
   );

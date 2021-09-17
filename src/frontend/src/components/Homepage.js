@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import axios from "axios";
 import "../styles/Homepage.css";
 
-const Homepage = ({ handleSubmit }) => {
+const Homepage = () => {
   const [homepageResults, setHomepageResults] = useState([]);
 
   // loads homepage products on startup
@@ -29,14 +29,9 @@ const Homepage = ({ handleSubmit }) => {
     );
   });
 
-  // calls the onSearchSubmit function passed down from <App /> and passes it the search term that it received from <NavigationBar />
-  const handleHomepageSubmit = (search) => {
-    handleSubmit(search);
-  };
-
   return (
     <div>
-      <NavigationBar handleHomepageSubmit={handleHomepageSubmit} />
+      <NavigationBar />
 
       <div className="sale-image-container">
         <img
