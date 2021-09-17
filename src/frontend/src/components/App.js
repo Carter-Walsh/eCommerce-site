@@ -12,7 +12,7 @@ import ProductSearchResults from "./ProductSearchResults";
 function App() {
   const [loginResponse, setLoginResponse] = useState();
 
-  const handleLogin = (result) => {
+  const handleSubmit = (result) => {
     setLoginResponse(result);
   };
 
@@ -20,10 +20,16 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/register" component={Register} />
+        {/* <Route exact path="/login" component={Login} /> */}
         <Route exact path="/product/:productId" component={DetailProductPage} />
-        <Route exact path="/products/search/:query" component={ProductSearchResults} />
-        <Route exact path="/" component={Homepage} />
-        {/* {loginResponse ? <Homepage /> : <Login onLoginSubmit={handleLogin} />} */}
+        <Route
+          exact
+          path="/products/search/:query"
+          component={ProductSearchResults}
+        />
+        <Route exact path={["/", "/login"]}>
+          {loginResponse ? <Homepage /> : <Login handleSubmit={handleSubmit} />}
+        </Route>
       </Switch>
     </Router>
   );

@@ -5,6 +5,7 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/esm/Container";
 import Image from "react-bootstrap/Image";
+import NavigationBar from "./NavigationBar";
 
 const DetailProductPage = (props) => {
   const productId = props.match.params.productId;
@@ -23,32 +24,38 @@ const DetailProductPage = (props) => {
   }, [productId]);
 
   return (
-    <div className="product-container">
-      <Container>
-        <div className="title">
-          <h1>{product.productName}</h1>
-        </div>
+    <div>
+      <NavigationBar />
+      <div className="product-container">
+        <Container>
+          <div className="title">
+            <h1>{product.productName}</h1>
+          </div>
 
-        <Row gutter={[16, 16]}>
-          <Col>
-            <div className="details-container">
-              <Image className="product-details-image" src={product.imageUrl} />
-            </div>
-          </Col>
-          <Col>
-            <div className="details-container">
-              <p className="product-details-text">${product.price}</p>
-              <p className="product-details-text">Brand: {product.brand}</p>
-              <p className="product-details-text">
-                Availability: {product.availability}
-              </p>
-              <p className="product-details-text">
-                Categories: {product.categories}
-              </p>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+          <Row gutter={[16, 16]}>
+            <Col>
+              <div className="details-container">
+                <Image
+                  className="product-details-image"
+                  src={product.imageUrl}
+                />
+              </div>
+            </Col>
+            <Col>
+              <div className="details-container">
+                <p className="product-details-text">${product.price}</p>
+                <p className="product-details-text">Brand: {product.brand}</p>
+                <p className="product-details-text">
+                  Availability: {product.availability}
+                </p>
+                <p className="product-details-text">
+                  Categories: {product.categories}
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 };
