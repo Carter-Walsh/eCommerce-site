@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/esm/Container";
 import Image from "react-bootstrap/Image";
 import NavigationBar from "./NavigationBar";
+import Button from "react-bootstrap/Button";
 
 const DetailProductPage = (props) => {
   const productId = props.match.params.productId;
@@ -28,13 +29,9 @@ const DetailProductPage = (props) => {
       <NavigationBar />
       <div className="product-container">
         <Container>
-          <div className="title">
-            <h1>{product.productName}</h1>
-          </div>
-
           <Row gutter={[16, 16]}>
             <Col>
-              <div className="details-container">
+              <div className="image-container">
                 <Image
                   className="product-details-image"
                   src={product.imageUrl}
@@ -43,14 +40,17 @@ const DetailProductPage = (props) => {
             </Col>
             <Col>
               <div className="details-container">
-                <p className="product-details-text">${product.price}</p>
-                <p className="product-details-text">Brand: {product.brand}</p>
-                <p className="product-details-text">
-                  Availability: {product.availability}
+                <h1>{product.productName}</h1>
+                <p className="green-text">Availability: {product.availability}</p>
+                <p className="product-details-text" style={{fontWeight: 'bold'}}>
+                  ${product.price}
                 </p>
-                <p className="product-details-text">
-                  Categories: {product.categories}
-                </p>
+                <p  style={{fontSize: '1rem', paddingBottom: '3rem'}}>Save 5% every day with eCommerceology <a href="http://google.com">loyalty card!</a></p>
+                  <Button variant="primary" type="submit">
+                    Add to Cart
+                  </Button>
+                  <p className="green-text" style={{paddingTop: '1rem'}}>Get it by Saturday, September 25th!</p>
+                  <p style={{textDecoration: 'underline', opacity: '.7', cursor: 'pointer'}}>Edit your location</p>
               </div>
             </Col>
           </Row>

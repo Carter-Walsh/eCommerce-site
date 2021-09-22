@@ -26,7 +26,6 @@ const Login = ({ handleSubmit }) => {
                 password: password
             }
         }).then((res) => {
-            console.log(res.data);
             handleSubmit(res.data);
         }, (err) => {
             console.log(err);
