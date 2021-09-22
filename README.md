@@ -2,7 +2,7 @@
 
 This project was created using React, Java and a PostgreSQL Database.
 
-## Pre-requsites
+## Prerequisites
 
 Make sure you have downloaded and have installed the following on your machine:
 * Node.js 
