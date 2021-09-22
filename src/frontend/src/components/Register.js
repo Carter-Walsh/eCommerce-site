@@ -128,6 +128,9 @@ const Register = () => {
         <Button variant="primary" type="submit">
           Register
         </Button>
+        <Button variant="primary" type="submit" href="/login">
+          Login
+        </Button>
       </Form>
     </Container>
   );
