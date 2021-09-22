@@ -30,7 +30,6 @@ const NavigationBar = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#features">What's New</Nav.Link>
-              <Nav.Link href="#pricing">Profile</Nav.Link>
               <NavDropdown title="Categories" id="collasible-nav-dropdown">
                 <NavDropdown.Item>Headphones</NavDropdown.Item>
                 <NavDropdown.Item>Computers</NavDropdown.Item>
@@ -39,6 +38,8 @@ const NavigationBar = () => {
                 <NavDropdown.Item>Tv</NavDropdown.Item>
                 <NavDropdown.Item>Sports and Outdoors</NavDropdown.Item>
               </NavDropdown>
+              <Nav.Link href="#pricing">Profile</Nav.Link>
+              <Nav.Link href="/login">Logout</Nav.Link>
             </Nav>
             <Nav>
               <Form onSubmit={handleSubmit} className="d-flex">
