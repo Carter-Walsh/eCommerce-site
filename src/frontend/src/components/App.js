@@ -27,6 +27,7 @@ function App() {
           path="/products/search/:query"
           component={ProductSearchResults}
         />
+        <Route exact path = "/homepage" component={Homepage} />
         <Route exact path={["/", "/login"]} component={Homepage}>
           {loginResponse ? <Homepage /> : <Login handleSubmit={handleSubmit} />}
         </Route>

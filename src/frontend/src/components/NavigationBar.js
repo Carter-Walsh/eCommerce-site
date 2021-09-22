@@ -25,22 +25,19 @@ const NavigationBar = () => {
     <div>
       <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
         <Container>
-          <Navbar.Brand href="/">eCommerce Site</Navbar.Brand>
+          <Navbar.Brand href="/homepage">eCommerceology</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#features">What's New</Nav.Link>
               <Nav.Link href="#pricing">Profile</Nav.Link>
               <NavDropdown title="Categories" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">
-                  Electronics
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Headphones
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Computers
-                </NavDropdown.Item>
+                <NavDropdown.Item>Headphones</NavDropdown.Item>
+                <NavDropdown.Item>Computers</NavDropdown.Item>
+                <NavDropdown.Item>Audio</NavDropdown.Item>
+                <NavDropdown.Item>Video</NavDropdown.Item>
+                <NavDropdown.Item>Tv</NavDropdown.Item>
+                <NavDropdown.Item>Sports and Outdoors</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Nav>
